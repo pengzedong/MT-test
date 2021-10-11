@@ -10,7 +10,7 @@ jobs:
       - shell: cmd
         run: |
           set /a result=3 + 7 > math-homework.txt
-          echo The result is $value
+          echo The result is %result%
       - name: Upload math result for job 1
         uses: actions/upload-artifact@v2
         with:
