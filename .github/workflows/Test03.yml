@@ -13,11 +13,18 @@ jobs:
       run:
         shell: cmd
         working-directory: pengzedong/MT-test
+        
 
 
     steps:
     - name: Checkout swmm repo
       uses: actions/checkout@v2
+      
+    - name: Checkout test repo
+      uses: actions/checkout@v2
+      with:
+        repository: pengzedong/MT-test
+        ref: master
 
     - name: Setup python
       uses: actions/setup-python@v2
