@@ -12,7 +12,7 @@ jobs:
     defaults:
       run:
         shell: cmd
-        working-directory: MT-test/MT-test
+        working-directory: MT-test2
         
 
 
@@ -23,9 +23,9 @@ jobs:
     - name: Checkout test repo
       uses: actions/checkout@v2
       with:
-        repository: pengzedong/MT-test
+        repository: pengzedong/MT-test2
         ref: master
-        path: MT-test
+        path: MT-test2
         
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
