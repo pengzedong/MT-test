@@ -25,6 +25,7 @@ jobs:
       with:
         repository: pengzedong/MT-test
         ref: master
+        path: MT-test
 
     - name: Setup python
       uses: actions/setup-python@v2
