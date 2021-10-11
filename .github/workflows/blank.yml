@@ -30,7 +30,7 @@ jobs:
           set /a result=4 +5
           echo The result is %result%
           set /P value=<math-homework.txt`
-          set /a result2= result + value > math-homework2.txt
+          set /a result2= result + value > math-homework.txt
       - name: Upload math result for job 2
         uses: actions/upload-artifact@v2
         with:
@@ -49,5 +49,5 @@ jobs:
       - name: Print the final result
         shell: bash
         run: |
-          value=`cat math-homework2.txt`
+          value=`cat math-homework.txt`
           echo The result is $value
