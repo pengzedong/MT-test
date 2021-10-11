@@ -1,0 +1,31 @@
+name: test03
+
+on:
+  push:
+    branches: [ master, develop, release, codedrop ]
+  pull_request:
+    branches: [ master, develop, release, codedrop ]
+
+jobs:
+  win_build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: cmd
+        working-directory: pengzedong/MT-test
+
+
+    steps:
+    - name: Checkout swmm repo
+      uses: actions/checkout@v2
+
+    - name: Setup python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.7'
+    - shell: cmd
+      run: |
+        python MT-python.py 3 9 >result.txt
+        set /P Result1=<result.txt
+        python MT-checker-python.py 3 9 Result1
+    
