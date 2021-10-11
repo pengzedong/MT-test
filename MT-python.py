@@ -1,12 +1,13 @@
 import sys
 
-
-def add(a, b):
+def RightTriangle(a, b):
     
     #print('the a is', a)
     #print('the b is', b)
-    c=int(a)+int(b)
-    return print(c)
+    temp=(int(a)**2)+(int(b)**2)
+    c=pow(temp,0.5)
+    print(int(c))
+    return int(c)
 
 
     
@@ -14,7 +15,7 @@ def add(a, b):
 if __name__ == '__main__':
     try:
         a, b= sys.argv[1:3]
-        add(a, b)
+        RightTriangle(a, b)
     except Exception as e:
         print(sys.argv)
         print(e)
