@@ -9,8 +9,8 @@ jobs:
     steps:
       - shell: bash
         run: |
-          let job1Result=2 + 3
-          expr $job1Result > math-homework.txt
+          let job1Result=2+3
+          expr $job1Result>math-homework.txt
           echo the job1 result is $job1Result
       - name: Upload math result for job 1
         uses: actions/upload-artifact@v2
@@ -29,9 +29,9 @@ jobs:
           name: homework
       - shell: cmd
         run: |
-          set /a job2Value=4 +5
+          set /a job2Value=4+5
           set /P Job1value=<math-homework.txt`
-          set /a job2Result= job2Value * Job1value > math-homework.txt
+          set /a job2Result=job2Value*Job1value>math-homework.txt
           echo The result is %job2Result%
       - name: Upload math result for job 2
         uses: actions/upload-artifact@v2
