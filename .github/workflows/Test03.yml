@@ -25,7 +25,5 @@ jobs:
         python-version: '3.7'
     - shell: cmd
       run: |
-        python MT-python.py 3 9 >result.txt
-        set /P Result1=<result.txt
-        python MT-checker-python.py 3 9 Result1
+        run-test1.cmd
     
