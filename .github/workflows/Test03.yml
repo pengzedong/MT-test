@@ -33,5 +33,7 @@ jobs:
         python-version: '3.7'
     - shell: cmd
       run: |
-        run-test1.cmd
-    
+        python MT-python.py 3 4 >temp1.txt
+        set /P value=<temp1.txt
+        echo %value%
+        python MT-checker-python.py 3 4 %value%
