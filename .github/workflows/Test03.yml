@@ -12,7 +12,7 @@ jobs:
     defaults:
       run:
         shell: cmd
-        working-directory: pengzedong/MT-test
+        working-directory: MT-test/MT-test
         
 
 
@@ -26,14 +26,19 @@ jobs:
         repository: pengzedong/MT-test
         ref: master
         path: MT-test
+        
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+        architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
 
+    
     - name: Setup python
       uses: actions/setup-python@v2
       with:
         python-version: '3.7'
-    - shell: cmd
-      run: |
-        python MT-python.py 3 4 >temp1.txt
-        set /P value=<temp1.txt
-        echo %value%
-        python MT-checker-python.py 3 4 %value%
+        
+    - name: run test
+      run: run-test1.cmd
+
