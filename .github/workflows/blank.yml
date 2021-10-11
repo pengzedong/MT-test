@@ -49,5 +49,5 @@ jobs:
       - name: Print the final result
         shell: bash
         run: |
-          value=`cat math-homework.txt`
+          value=`cat math-homework2.txt`
           echo The result is $value
