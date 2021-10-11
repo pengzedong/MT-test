@@ -1,0 +1,55 @@
+name: data sharing in jobs
+
+on: [push]
+
+jobs:
+  job_1:
+    name: Add 2 and 3
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          let job1Result=2 + 3
+          expr $job1Result > math-homework.txt
+          echo the job1 result is $job1Result
+      - name: Upload math result for job 1
+        uses: actions/upload-artifact@v2
+        with:
+          name: homework
+          path: math-homework.txt
+
+  job_2:
+    name: Multiply by (4+5)
+    needs: job_1
+    runs-on: windows-latest
+    steps:
+      - name: Download math result for job 1
+        uses: actions/download-artifact@v2
+        with:
+          name: homework
+      - shell: cmd
+        run: |
+          set /a job2Value=4 +5
+          set /P Job1value=<math-homework.txt`
+          set /a job2Result= job2Value * Job1value > math-homework.txt
+          echo The result is %job2Result%
+      - name: Upload math result for job 2
+        uses: actions/upload-artifact@v2
+        with:
+          name: homework
+          path: math-homework.txt
+
+  job_3:
+    name: Display results
+    needs: job_2
+    runs-on: macOS-latest
+    steps:
+      - name: Download math result for job 2
+        uses: actions/download-artifact@v2
+        with:
+          name: homework
+      - name: Print the final result
+        shell: bash
+        run: |
+          value=`cat math-homework.txt`
+          echo The result is $value
